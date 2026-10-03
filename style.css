@@ -1,113 +1,208 @@
 :root {
     --bg-color: #ebdff0;
     --panel-bg: #d4badc;
-    --border-light: #f4ecf7;
-    --border-dark: #a88cb3;
+    --border-light: #ffffff;
+    --border-dark: #8c6a99;
+    --border-mid: #a88cb3;
     --text-color: #3b2a45;
     --btn-bg: #b993c9;
-    --btn-hover: #a67cba;
+    --btn-hover: #9b72ae;
+    --title-bar-bg: linear-gradient(90deg, #9667ab, #b993c9);
 }
 
 body {
     background-color: var(--bg-color);
+    /* Fondo con patrón de puntos para un toque más retro web */
+    background-image: radial-gradient(var(--border-mid) 1px, transparent 1px);
+    background-size: 20px 20px;
     color: var(--text-color);
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Tahoma', 'Verdana', sans-serif; /* Tipografía Y2K de interfaz */
     margin: 0;
-    padding: 10px;
+    padding: 20px 10px;
     font-size: 16px;
     box-sizing: border-box;
 }
 
-.dashboard-panel {
+/* --- ESTILO VENTANAS Y2K --- */
+.window {
     background: var(--panel-bg);
-    border-top: 3px solid var(--border-light);
-    border-left: 3px solid var(--border-light);
-    border-right: 3px solid var(--border-dark);
-    border-bottom: 3px solid var(--border-dark);
-    padding: 15px;
-    margin-bottom: 20px;
-    max-width: 500px;
+    border-top: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    border-right: 2px solid var(--text-color);
+    border-bottom: 2px solid var(--text-color);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+    max-width: 550px;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.window-title-bar {
+    background: var(--title-bar-bg);
+    color: white;
+    padding: 4px 8px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.window-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.control-btn {
+    display: inline-block;
+    background: var(--panel-bg);
+    color: var(--text-color);
+    border-top: 1px solid var(--border-light);
+    border-left: 1px solid var(--border-light);
+    border-right: 1px solid var(--text-color);
+    border-bottom: 1px solid var(--text-color);
+    padding: 0 5px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: default;
+}
+
+.window-content {
+    padding: 15px;
 }
 
 .header p {
     margin: 5px 0;
     text-align: center;
+    line-height: 1.4;
 }
 
+.text-center {
+    text-align: center;
+}
+
+/* --- BLOQUES DE PREGUNTAS --- */
 .question-block {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 2px dashed var(--border-dark);
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px groove var(--border-light);
 }
 
 .question-block:last-of-type {
     border-bottom: none;
 }
 
-label {
-    display: block;
-    background: rgba(255, 255, 255, 0.4);
-    padding: 12px;
-    margin: 8px 0;
-    border: 1px solid var(--border-dark);
-    border-radius: 4px;
-    cursor: pointer;
+.question-title {
+    margin-bottom: 15px;
+    font-size: 1.05em;
+    color: #2a1b33;
 }
 
+/* --- ANIMACIÓN Y SELECCIÓN DE LAS FICHAS --- */
+/* Ocultamos los botones de radio por defecto */
 input[type="radio"] {
-    margin-right: 10px;
-    transform: scale(1.2);
+    display: none;
 }
 
-button {
+/* Estilo base de la ficha completa */
+.option-card {
+    display: block;
+    background: var(--bg-color);
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-top: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-dark);
+    border-bottom: 2px solid var(--border-dark);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Efecto hover (al pasar el ratón) */
+.option-card:hover {
+    background: #fdfafc;
+    transform: translateY(-2px); /* Se eleva un poco */
+    box-shadow: 4px 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Efecto Checked (cuando se selecciona) */
+input[type="radio"]:checked + .option-card {
+    background: var(--btn-hover);
+    color: white;
+    /* Invertimos los bordes para crear efecto hundido (inset) */
+    border-top: 2px solid var(--text-color);
+    border-left: 2px solid var(--text-color);
+    border-right: 2px solid var(--border-light);
+    border-bottom: 2px solid var(--border-light);
+    transform: translateY(2px) scale(0.98); /* Se hunde y encoge un 2% */
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* --- BOTONES Y2K --- */
+.y2k-button {
     width: 100%;
     padding: 15px;
     font-size: 16px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Tahoma', sans-serif;
     font-weight: bold;
-    color: #fff;
+    color: var(--text-color);
     background: var(--btn-bg);
-    border-top: 3px solid var(--border-light);
-    border-left: 3px solid var(--border-light);
-    border-right: 3px solid var(--border-dark);
-    border-bottom: 3px solid var(--border-dark);
+    border-top: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    border-right: 2px solid var(--text-color);
+    border-bottom: 2px solid var(--text-color);
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 15px;
+    transition: all 0.1s;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
 }
 
-button:active {
-    border-top: 3px solid var(--border-dark);
-    border-left: 3px solid var(--border-dark);
-    border-right: 3px solid var(--border-light);
-    border-bottom: 3px solid var(--border-light);
+.y2k-button:active {
+    border-top: 2px solid var(--text-color);
+    border-left: 2px solid var(--text-color);
+    border-right: 2px solid var(--border-light);
+    border-bottom: 2px solid var(--border-light);
     background: var(--btn-hover);
+    transform: translateY(2px);
+    box-shadow: none;
 }
 
+/* --- CAJA DE RESULTADO FINAL --- */
 .code-box {
+    background: #000; /* Fondo negro tipo consola para destacar */
+    color: #00ff00; /* Letras verdes tipo Matrix/MS-DOS */
+    padding: 20px;
+    margin: 20px 0;
+    border: 3px inset var(--border-dark);
     text-align: center;
-    background: var(--bg-color);
-    padding: 15px;
-    margin: 15px 0;
-    border: 2px inset var(--border-dark);
 }
 
 h2#final-code {
-    letter-spacing: 5px;
-    margin: 0 0 10px 0;
-    font-size: 24px;
+    letter-spacing: 8px;
+    margin: 0 0 15px 0;
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .small-btn {
     width: auto;
-    padding: 8px 15px;
+    padding: 8px 20px;
     font-size: 14px;
+    background: var(--bg-color);
 }
 
 .whatsapp-btn {
-    background: #25D366; /* Verde de WhatsApp adaptado al estilo */
+    background: #25D366; 
     color: white;
+}
+.whatsapp-btn:hover {
+    background: #20b858;
 }
 
 a {
