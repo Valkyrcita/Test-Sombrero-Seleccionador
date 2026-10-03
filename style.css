@@ -1,0 +1,115 @@
+:root {
+    --bg-color: #ebdff0;
+    --panel-bg: #d4badc;
+    --border-light: #f4ecf7;
+    --border-dark: #a88cb3;
+    --text-color: #3b2a45;
+    --btn-bg: #b993c9;
+    --btn-hover: #a67cba;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.dashboard-panel {
+    background: var(--panel-bg);
+    border-top: 3px solid var(--border-light);
+    border-left: 3px solid var(--border-light);
+    border-right: 3px solid var(--border-dark);
+    border-bottom: 3px solid var(--border-dark);
+    padding: 15px;
+    margin-bottom: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header p {
+    margin: 5px 0;
+    text-align: center;
+}
+
+.question-block {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed var(--border-dark);
+}
+
+.question-block:last-of-type {
+    border-bottom: none;
+}
+
+label {
+    display: block;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: #fff;
+    background: var(--btn-bg);
+    border-top: 3px solid var(--border-light);
+    border-left: 3px solid var(--border-light);
+    border-right: 3px solid var(--border-dark);
+    border-bottom: 3px solid var(--border-dark);
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:active {
+    border-top: 3px solid var(--border-dark);
+    border-left: 3px solid var(--border-dark);
+    border-right: 3px solid var(--border-light);
+    border-bottom: 3px solid var(--border-light);
+    background: var(--btn-hover);
+}
+
+.code-box {
+    text-align: center;
+    background: var(--bg-color);
+    padding: 15px;
+    margin: 15px 0;
+    border: 2px inset var(--border-dark);
+}
+
+h2#final-code {
+    letter-spacing: 5px;
+    margin: 0 0 10px 0;
+    font-size: 24px;
+}
+
+.small-btn {
+    width: auto;
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.whatsapp-btn {
+    background: #25D366; /* Verde de WhatsApp adaptado al estilo */
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
